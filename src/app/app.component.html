@@ -1,50 +1,116 @@
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-white active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">Link</a>
-        </li>
-      </ul>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <!-- Título alineado a la izquierda -->
+      <a class="navbar-brand text-white" href="#">School Management</a>
+
+      <!-- Botón de "hamburguesa" -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menús desplegables -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav flex-wrap">
+          <!-- Grades Dropdown -->
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="gradesDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Grades
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="gradesDropdown">
+              <li><a class="dropdown-item" routerLink="/grades/create">Create</a></li>
+              <li><a class="dropdown-item" routerLink="/grades/list">Get All</a></li>
+              <li><a class="dropdown-item" routerLink="/grades/detail/:id">Get By ID</a></li>
+              <li><a class="dropdown-item" routerLink="/grades/update/:id">Update</a></li>
+              <li><a class="dropdown-item" routerLink="/grades/delete/:id">Delete</a></li>
+            </ul>
+          </li>
+
+          <!-- Groups Dropdown -->
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="groupsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Groups
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="groupsDropdown">
+              <li><a class="dropdown-item" routerLink="/groups/create">Create</a></li>
+              <li><a class="dropdown-item" routerLink="/groups/list">Get All</a></li>
+              <li><a class="dropdown-item" routerLink="/groups/detail/:id">Get By ID</a></li>
+              <li><a class="dropdown-item" routerLink="/groups/update/:id">Update</a></li>
+              <li><a class="dropdown-item" routerLink="/groups/delete/:id">Delete</a></li>
+            </ul>
+          </li>
+
+          <!-- Students Dropdown -->
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="studentsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Students
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="studentsDropdown">
+              <li><a class="dropdown-item" routerLink="/students/create">Create</a></li>
+              <li><a class="dropdown-item" routerLink="/students/list">Get All</a></li>
+              <li><a class="dropdown-item" routerLink="/students/detail/:id">Get By ID</a></li>
+              <li><a class="dropdown-item" routerLink="/students/update/:id">Update</a></li>
+              <li><a class="dropdown-item" routerLink="/students/delete/:id">Delete</a></li>
+              <li><a class="dropdown-item" routerLink="/students/add-group">Add to Group</a></li>
+            </ul>
+          </li>
+
+          <!-- Teachers Dropdown -->
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="teachersDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Teachers
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="teachersDropdown">
+              <li><a class="dropdown-item" routerLink="/teachers/create">Create</a></li>
+              <li><a class="dropdown-item" routerLink="/teachers/list">Get All</a></li>
+              <li><a class="dropdown-item" routerLink="/teachers/detail/:id">Get By ID</a></li>
+              <li><a class="dropdown-item" routerLink="/teachers/update/:id">Update</a></li>
+              <li><a class="dropdown-item" routerLink="/teachers/delete/:id">Delete</a></li>
+              <li><a class="dropdown-item" routerLink="/teachers/assign-group">Assign to Group</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-
-
-<div class="container mt-4">
-  <div *ngIf="students!.length > 0; else noStudents">
-    <h2 class="mb-4">Student List</h2>
-    <table class="table table-bordered table-hover table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Last Name</th>
-          <th>Gender</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of students">
-          <td>{{ student.id }}</td>
-          <td>{{ student.name }}</td>
-          <td>{{ student.lastName }}</td>
-          <td>{{ student.genderId }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <ng-template #noStudents>
-    <div class="alert alert-warning text-center" role="alert">
-      No students available.
-    </div>
-  </ng-template>
+  </nav>
 </div>
+
+
+
+
+
+<!-- <div class="container mt-4">
+    <div *ngIf="students!.length > 0; else noStudents">
+      <h2 class="mb-4">Student List</h2>
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.genderId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noStudents>
+      <div class="alert alert-warning text-center" role="alert">
+        No students available.
+      </div>
+    </ng-template>
+  </div> -->
+
 <router-outlet></router-outlet>

@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2>Students List</h2>
+  <table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Gender ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.genderId }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>list works!</p>
