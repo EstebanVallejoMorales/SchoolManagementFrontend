@@ -1,12 +1,26 @@
 <div class="container mt-4">
   <h2>Students List</h2>
-  <table class="table table-bordered table-hover table-striped">
+
+  <!-- Mensaje de éxito -->
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Tabla de estudiantes -->
+  <table class="table table-bordered table-hover">
     <thead class="table-dark">
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Last Name</th>
         <th>Gender ID</th>
+        <th>Gender</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +29,32 @@
         <td>{{ student.name }}</td>
         <td>{{ student.lastName }}</td>
         <td>{{ student.genderId }}</td>
+        <td>{{ student.genderName }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="onEdit(student)">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete(student.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Formulario para editar estudiante -->
+  <div *ngIf="editingStudent" class="mt-4">
+    <h3>Edit Student</h3>
+    <form (ngSubmit)="onSave()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="editingStudent.name" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="editingStudent.lastName" name="lastName" required>
+      </div>
+      <div class="mb-3">
+        <label for="genderId" class="form-label">Gender ID</label>
+        <input type="number" class="form-control" id="genderId" [(ngModel)]="editingStudent.genderId" name="genderId" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
 </div>
-<p>list works!</p>

@@ -1,1 +1,37 @@
-<p>create works!</p>
+<div class="container mt-4">
+  <h2>Create Student</h2>
+
+  <!-- Mensaje de éxito -->
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Lista de errores detallados -->
+  <ul *ngIf="detailedErrors.length > 0" class="alert alert-danger mt-3">
+    <li *ngFor="let error of detailedErrors">
+      {{ error }}
+    </li>
+  </ul>
+
+  <!-- Formulario -->
+  <form (ngSubmit)="onSave()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="student.name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="student.lastName" name="lastName" required>
+    </div>
+    <div class="mb-3">
+      <label for="genderId" class="form-label">Gender ID</label>
+      <input type="number" class="form-control" id="genderId" [(ngModel)]="student.genderId" name="genderId" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>

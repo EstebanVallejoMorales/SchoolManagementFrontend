@@ -8,13 +8,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { StudentViewModelResponseDto } from '../../models/student-view-model-response-dto';
+import { Int32ResponseDto } from '../../models/int-32-response-dto';
 
 export interface ApiStudentDeleteStudentStudentIdDelete$Plain$Params {
   studentId: number;
 }
 
-export function apiStudentDeleteStudentStudentIdDelete$Plain(http: HttpClient, rootUrl: string, params: ApiStudentDeleteStudentStudentIdDelete$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelResponseDto>> {
+export function apiStudentDeleteStudentStudentIdDelete$Plain(http: HttpClient, rootUrl: string, params: ApiStudentDeleteStudentStudentIdDelete$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResponseDto>> {
   const rb = new RequestBuilder(rootUrl, apiStudentDeleteStudentStudentIdDelete$Plain.PATH, 'delete');
   if (params) {
     rb.path('studentId', params.studentId, {});
@@ -25,7 +25,7 @@ export function apiStudentDeleteStudentStudentIdDelete$Plain(http: HttpClient, r
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<StudentViewModelResponseDto>;
+      return r as StrictHttpResponse<Int32ResponseDto>;
     })
   );
 }

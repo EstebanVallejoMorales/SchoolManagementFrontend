@@ -32,7 +32,7 @@ import { ApiStudentUpdateStudentPut$Json$Params } from '../fn/student/api-studen
 import { apiStudentUpdateStudentPut$Plain } from '../fn/student/api-student-update-student-put-plain';
 import { ApiStudentUpdateStudentPut$Plain$Params } from '../fn/student/api-student-update-student-put-plain';
 import { Int32ResponseDto } from '../models/int-32-response-dto';
-import { StudentIEnumerableResponseDto } from '../models/student-i-enumerable-response-dto';
+import { StudentViewModelIEnumerableResponseDto } from '../models/student-view-model-i-enumerable-response-dto';
 import { StudentViewModelResponseDto } from '../models/student-view-model-response-dto';
 
 @Injectable({ providedIn: 'root' })
@@ -50,7 +50,7 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentGetAllStudentsGet$Plain$Response(params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentIEnumerableResponseDto>> {
+  apiStudentGetAllStudentsGet$Plain$Response(params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelIEnumerableResponseDto>> {
     return apiStudentGetAllStudentsGet$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -60,9 +60,9 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentGetAllStudentsGet$Plain(params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StudentIEnumerableResponseDto> {
+  apiStudentGetAllStudentsGet$Plain(params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StudentViewModelIEnumerableResponseDto> {
     return this.apiStudentGetAllStudentsGet$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StudentIEnumerableResponseDto>): StudentIEnumerableResponseDto => r.body)
+      map((r: StrictHttpResponse<StudentViewModelIEnumerableResponseDto>): StudentViewModelIEnumerableResponseDto => r.body)
     );
   }
 
@@ -72,7 +72,7 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentGetAllStudentsGet$Json$Response(params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentIEnumerableResponseDto>> {
+  apiStudentGetAllStudentsGet$Json$Response(params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelIEnumerableResponseDto>> {
     return apiStudentGetAllStudentsGet$Json(this.http, this.rootUrl, params, context);
   }
 
@@ -82,9 +82,9 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentGetAllStudentsGet$Json(params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StudentIEnumerableResponseDto> {
+  apiStudentGetAllStudentsGet$Json(params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StudentViewModelIEnumerableResponseDto> {
     return this.apiStudentGetAllStudentsGet$Json$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StudentIEnumerableResponseDto>): StudentIEnumerableResponseDto => r.body)
+      map((r: StrictHttpResponse<StudentViewModelIEnumerableResponseDto>): StudentViewModelIEnumerableResponseDto => r.body)
     );
   }
 
@@ -238,7 +238,7 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentDeleteStudentStudentIdDelete$Plain$Response(params: ApiStudentDeleteStudentStudentIdDelete$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelResponseDto>> {
+  apiStudentDeleteStudentStudentIdDelete$Plain$Response(params: ApiStudentDeleteStudentStudentIdDelete$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResponseDto>> {
     return apiStudentDeleteStudentStudentIdDelete$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -248,9 +248,9 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentDeleteStudentStudentIdDelete$Plain(params: ApiStudentDeleteStudentStudentIdDelete$Plain$Params, context?: HttpContext): Observable<StudentViewModelResponseDto> {
+  apiStudentDeleteStudentStudentIdDelete$Plain(params: ApiStudentDeleteStudentStudentIdDelete$Plain$Params, context?: HttpContext): Observable<Int32ResponseDto> {
     return this.apiStudentDeleteStudentStudentIdDelete$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StudentViewModelResponseDto>): StudentViewModelResponseDto => r.body)
+      map((r: StrictHttpResponse<Int32ResponseDto>): Int32ResponseDto => r.body)
     );
   }
 
@@ -260,7 +260,7 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentDeleteStudentStudentIdDelete$Json$Response(params: ApiStudentDeleteStudentStudentIdDelete$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelResponseDto>> {
+  apiStudentDeleteStudentStudentIdDelete$Json$Response(params: ApiStudentDeleteStudentStudentIdDelete$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResponseDto>> {
     return apiStudentDeleteStudentStudentIdDelete$Json(this.http, this.rootUrl, params, context);
   }
 
@@ -270,9 +270,9 @@ export class StudentService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  apiStudentDeleteStudentStudentIdDelete$Json(params: ApiStudentDeleteStudentStudentIdDelete$Json$Params, context?: HttpContext): Observable<StudentViewModelResponseDto> {
+  apiStudentDeleteStudentStudentIdDelete$Json(params: ApiStudentDeleteStudentStudentIdDelete$Json$Params, context?: HttpContext): Observable<Int32ResponseDto> {
     return this.apiStudentDeleteStudentStudentIdDelete$Json$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StudentViewModelResponseDto>): StudentViewModelResponseDto => r.body)
+      map((r: StrictHttpResponse<Int32ResponseDto>): Int32ResponseDto => r.body)
     );
   }
 

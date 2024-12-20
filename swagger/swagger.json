@@ -21,17 +21,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudentIEnumerableResponseDto"
+                  "$ref": "#/components/schemas/StudentViewModelIEnumerableResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudentIEnumerableResponseDto"
+                  "$ref": "#/components/schemas/StudentViewModelIEnumerableResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudentIEnumerableResponseDto"
+                  "$ref": "#/components/schemas/StudentViewModelIEnumerableResponseDto"
                 }
               }
             }
@@ -277,17 +277,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudentViewModelResponseDto"
+                  "$ref": "#/components/schemas/Int32ResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudentViewModelResponseDto"
+                  "$ref": "#/components/schemas/Int32ResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudentViewModelResponseDto"
+                  "$ref": "#/components/schemas/Int32ResponseDto"
                 }
               }
             }
@@ -394,52 +394,6 @@
         },
         "additionalProperties": { }
       },
-      "Student": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "genderId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "StudentIEnumerableResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Student"
-            },
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ErrorDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "StudentViewModel": {
         "type": "object",
         "properties": {
@@ -458,6 +412,34 @@
           "genderId": {
             "type": "integer",
             "format": "int32"
+          },
+          "genderName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudentViewModelIEnumerableResponseDto": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentViewModel"
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ErrorDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -8,12 +8,12 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { StudentIEnumerableResponseDto } from '../../models/student-i-enumerable-response-dto';
+import { StudentViewModelIEnumerableResponseDto } from '../../models/student-view-model-i-enumerable-response-dto';
 
 export interface ApiStudentGetAllStudentsGet$Plain$Params {
 }
 
-export function apiStudentGetAllStudentsGet$Plain(http: HttpClient, rootUrl: string, params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentIEnumerableResponseDto>> {
+export function apiStudentGetAllStudentsGet$Plain(http: HttpClient, rootUrl: string, params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelIEnumerableResponseDto>> {
   const rb = new RequestBuilder(rootUrl, apiStudentGetAllStudentsGet$Plain.PATH, 'get');
   if (params) {
   }
@@ -23,7 +23,7 @@ export function apiStudentGetAllStudentsGet$Plain(http: HttpClient, rootUrl: str
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<StudentIEnumerableResponseDto>;
+      return r as StrictHttpResponse<StudentViewModelIEnumerableResponseDto>;
     })
   );
 }
