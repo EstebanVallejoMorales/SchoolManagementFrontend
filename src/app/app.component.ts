@@ -1,6 +1,8 @@
+import { Int32ResponseDto } from './src/api/models/int-32-response-dto';
 import { Component } from '@angular/core';
 import { StudentService } from './src/api/services';
 import { Student } from './src/api/models/student';
+import { StudentIEnumerableResponseDto } from './src/api/models/student-i-enumerable-response-dto';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +11,14 @@ import { Student } from './src/api/models/student';
 })
 export class AppComponent {
   title = 'SchoolManagementFrontend';
-  public students: Student[] = [];
-  public constructor(private api : StudentService)
+  public responseDto: StudentIEnumerableResponseDto = {};
+  public students: Student[] | null | undefined = [];
+
+  public constructor(private readonly api : StudentService)
   {
-    this.api.getStudents$Json().subscribe(res => {
-      this.students = res;
+    this.api.apiStudentGetAllStudentsGet$Json().subscribe(res => {
+      this.responseDto = res;
+      this.students = this.responseDto.data;
     })
   }
 }

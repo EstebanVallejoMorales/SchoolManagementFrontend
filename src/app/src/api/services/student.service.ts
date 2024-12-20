@@ -11,13 +11,21 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { createStudent } from '../fn/student/create-student';
-import { CreateStudent$Params } from '../fn/student/create-student';
-import { getStudents$Json } from '../fn/student/get-students-json';
-import { GetStudents$Json$Params } from '../fn/student/get-students-json';
-import { getStudents$Plain } from '../fn/student/get-students-plain';
-import { GetStudents$Plain$Params } from '../fn/student/get-students-plain';
-import { Student } from '../models/student';
+import { apiStudentCreateStudentPost$Json } from '../fn/student/api-student-create-student-post-json';
+import { ApiStudentCreateStudentPost$Json$Params } from '../fn/student/api-student-create-student-post-json';
+import { apiStudentCreateStudentPost$Plain } from '../fn/student/api-student-create-student-post-plain';
+import { ApiStudentCreateStudentPost$Plain$Params } from '../fn/student/api-student-create-student-post-plain';
+import { apiStudentGetAllStudentsGet$Json } from '../fn/student/api-student-get-all-students-get-json';
+import { ApiStudentGetAllStudentsGet$Json$Params } from '../fn/student/api-student-get-all-students-get-json';
+import { apiStudentGetAllStudentsGet$Plain } from '../fn/student/api-student-get-all-students-get-plain';
+import { ApiStudentGetAllStudentsGet$Plain$Params } from '../fn/student/api-student-get-all-students-get-plain';
+import { apiStudentGetAllStudentsStudentIdGet$Json } from '../fn/student/api-student-get-all-students-student-id-get-json';
+import { ApiStudentGetAllStudentsStudentIdGet$Json$Params } from '../fn/student/api-student-get-all-students-student-id-get-json';
+import { apiStudentGetAllStudentsStudentIdGet$Plain } from '../fn/student/api-student-get-all-students-student-id-get-plain';
+import { ApiStudentGetAllStudentsStudentIdGet$Plain$Params } from '../fn/student/api-student-get-all-students-student-id-get-plain';
+import { Int32ResponseDto } from '../models/int-32-response-dto';
+import { StudentIEnumerableResponseDto } from '../models/student-i-enumerable-response-dto';
+import { StudentViewModelResponseDto } from '../models/student-view-model-response-dto';
 
 @Injectable({ providedIn: 'root' })
 export class StudentService extends BaseService {
@@ -25,75 +33,144 @@ export class StudentService extends BaseService {
     super(config, http);
   }
 
-  /** Path part for operation `getStudents()` */
-  static readonly GetStudentsPath = '/api/Student';
+  /** Path part for operation `apiStudentGetAllStudentsGet()` */
+  static readonly ApiStudentGetAllStudentsGetPath = '/api/Student/GetAllStudents';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `getStudents$Plain()` instead.
+   * To access only the response body, use `apiStudentGetAllStudentsGet$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  getStudents$Plain$Response(params?: GetStudents$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Student>>> {
-    return getStudents$Plain(this.http, this.rootUrl, params, context);
+  apiStudentGetAllStudentsGet$Plain$Response(params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentIEnumerableResponseDto>> {
+    return apiStudentGetAllStudentsGet$Plain(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `getStudents$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiStudentGetAllStudentsGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  getStudents$Plain(params?: GetStudents$Plain$Params, context?: HttpContext): Observable<Array<Student>> {
-    return this.getStudents$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<Student>>): Array<Student> => r.body)
+  apiStudentGetAllStudentsGet$Plain(params?: ApiStudentGetAllStudentsGet$Plain$Params, context?: HttpContext): Observable<StudentIEnumerableResponseDto> {
+    return this.apiStudentGetAllStudentsGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StudentIEnumerableResponseDto>): StudentIEnumerableResponseDto => r.body)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `getStudents$Json()` instead.
+   * To access only the response body, use `apiStudentGetAllStudentsGet$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  getStudents$Json$Response(params?: GetStudents$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Student>>> {
-    return getStudents$Json(this.http, this.rootUrl, params, context);
+  apiStudentGetAllStudentsGet$Json$Response(params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentIEnumerableResponseDto>> {
+    return apiStudentGetAllStudentsGet$Json(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `getStudents$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiStudentGetAllStudentsGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  getStudents$Json(params?: GetStudents$Json$Params, context?: HttpContext): Observable<Array<Student>> {
-    return this.getStudents$Json$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<Student>>): Array<Student> => r.body)
+  apiStudentGetAllStudentsGet$Json(params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StudentIEnumerableResponseDto> {
+    return this.apiStudentGetAllStudentsGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StudentIEnumerableResponseDto>): StudentIEnumerableResponseDto => r.body)
     );
   }
 
-  /** Path part for operation `createStudent()` */
-  static readonly CreateStudentPath = '/api/Student';
+  /** Path part for operation `apiStudentGetAllStudentsStudentIdGet()` */
+  static readonly ApiStudentGetAllStudentsStudentIdGetPath = '/api/Student/GetAllStudents/{studentId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `createStudent()` instead.
+   * To access only the response body, use `apiStudentGetAllStudentsStudentIdGet$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  createStudent$Response(params?: CreateStudent$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-    return createStudent(this.http, this.rootUrl, params, context);
+  apiStudentGetAllStudentsStudentIdGet$Plain$Response(params: ApiStudentGetAllStudentsStudentIdGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelResponseDto>> {
+    return apiStudentGetAllStudentsStudentIdGet$Plain(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `createStudent$Response()` instead.
+   * To access the full response (for headers, for example), `apiStudentGetAllStudentsStudentIdGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiStudentGetAllStudentsStudentIdGet$Plain(params: ApiStudentGetAllStudentsStudentIdGet$Plain$Params, context?: HttpContext): Observable<StudentViewModelResponseDto> {
+    return this.apiStudentGetAllStudentsStudentIdGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StudentViewModelResponseDto>): StudentViewModelResponseDto => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiStudentGetAllStudentsStudentIdGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiStudentGetAllStudentsStudentIdGet$Json$Response(params: ApiStudentGetAllStudentsStudentIdGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentViewModelResponseDto>> {
+    return apiStudentGetAllStudentsStudentIdGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiStudentGetAllStudentsStudentIdGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiStudentGetAllStudentsStudentIdGet$Json(params: ApiStudentGetAllStudentsStudentIdGet$Json$Params, context?: HttpContext): Observable<StudentViewModelResponseDto> {
+    return this.apiStudentGetAllStudentsStudentIdGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StudentViewModelResponseDto>): StudentViewModelResponseDto => r.body)
+    );
+  }
+
+  /** Path part for operation `apiStudentCreateStudentPost()` */
+  static readonly ApiStudentCreateStudentPostPath = '/api/Student/CreateStudent';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiStudentCreateStudentPost$Plain()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  createStudent(params?: CreateStudent$Params, context?: HttpContext): Observable<void> {
-    return this.createStudent$Response(params, context).pipe(
-      map((r: StrictHttpResponse<void>): void => r.body)
+  apiStudentCreateStudentPost$Plain$Response(params?: ApiStudentCreateStudentPost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResponseDto>> {
+    return apiStudentCreateStudentPost$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiStudentCreateStudentPost$Plain$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiStudentCreateStudentPost$Plain(params?: ApiStudentCreateStudentPost$Plain$Params, context?: HttpContext): Observable<Int32ResponseDto> {
+    return this.apiStudentCreateStudentPost$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResponseDto>): Int32ResponseDto => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiStudentCreateStudentPost$Json()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiStudentCreateStudentPost$Json$Response(params?: ApiStudentCreateStudentPost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResponseDto>> {
+    return apiStudentCreateStudentPost$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiStudentCreateStudentPost$Json$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiStudentCreateStudentPost$Json(params?: ApiStudentCreateStudentPost$Json$Params, context?: HttpContext): Observable<Int32ResponseDto> {
+    return this.apiStudentCreateStudentPost$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResponseDto>): Int32ResponseDto => r.body)
     );
   }
 

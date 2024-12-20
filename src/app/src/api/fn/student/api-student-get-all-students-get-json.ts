@@ -8,13 +8,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Student } from '../../models/student';
+import { StudentIEnumerableResponseDto } from '../../models/student-i-enumerable-response-dto';
 
-export interface GetStudents$Json$Params {
+export interface ApiStudentGetAllStudentsGet$Json$Params {
 }
 
-export function getStudents$Json(http: HttpClient, rootUrl: string, params?: GetStudents$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Student>>> {
-  const rb = new RequestBuilder(rootUrl, getStudents$Json.PATH, 'get');
+export function apiStudentGetAllStudentsGet$Json(http: HttpClient, rootUrl: string, params?: ApiStudentGetAllStudentsGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StudentIEnumerableResponseDto>> {
+  const rb = new RequestBuilder(rootUrl, apiStudentGetAllStudentsGet$Json.PATH, 'get');
   if (params) {
   }
 
@@ -23,9 +23,9 @@ export function getStudents$Json(http: HttpClient, rootUrl: string, params?: Get
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<Array<Student>>;
+      return r as StrictHttpResponse<StudentIEnumerableResponseDto>;
     })
   );
 }
 
-getStudents$Json.PATH = '/api/Student';
+apiStudentGetAllStudentsGet$Json.PATH = '/api/Student/GetAllStudents';
